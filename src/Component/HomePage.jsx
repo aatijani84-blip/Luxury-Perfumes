@@ -64,7 +64,7 @@ export function HomePage() {
                 </nav>
             </div>
 
-            <div className = 'grid lg:grid-cols-[500px_minmax(900px,1fr)] md:grid-cols-[300px_minmax(500px,900px)] sm:flex border-y-2 gap-x-1 min-h-152 border-b-amber-400 border-t-amber-400 sm:col-span-3' >
+            <div className = 'grid lg:grid-cols-[500px_minmax(900px,1fr)] md:grid-cols-[300px_minmax(500px,900px)] sm:flex sm:justify-center sm:items-center sm:flex-col border-y-2 gap-x-1 min-h-152 border-b-amber-400 border-t-amber-400 sm:col-span-3' >
                 
                 <div className="flex items-center justify-center h-full w-full">
                     <Description />
