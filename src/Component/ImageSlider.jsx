@@ -77,7 +77,7 @@ export function ImageSlider() {
 
 
     return (
-        <div className="relative aspect-square w-full h-full overflow-hidden">
+        <div className="relative aspect-square w-full h-full overflow-hidden sm:rounded-lg">
             <AnimatePresence mode="wait">
                 <motion.img
                     key={images[currentImage].id}       
@@ -87,7 +87,7 @@ export function ImageSlider() {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 1 }}
-                    className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 block rounded-lg"
+                    className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 block rounded-lg sm:rounded-lg sm:object-center saturate-100"
                 />
             </AnimatePresence>
         </div>
