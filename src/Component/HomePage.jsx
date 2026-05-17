@@ -54,10 +54,10 @@ export function HomePage() {
                     <NavLink to = "/cart"
                     className = {({isActive}) =>
                                 isActive ? 'text-red-400 cursor-pointer font-bold px-3 py-2' : 'hover:text-gray-600 relative cursor-pointer px-3 py-2 text-gray-400 transition-colors duration-200'}>
-                        <div className="relative inline-block border-2">
+                        <div className="relative inline-block">
                         <img src="/Cart.jpg" alt="Cart" className="relative inline-block h-10 w-10 bg-gray-100" />
-                        <div className="absolute lg:top-5/10 left-6 bg-gray-400 text-black rounded-full h-6 w-6 flex items-center justify-center sm:-top-5/10 sm:left-6">
-                        0
+                        <div className="absolute top-5 -right-2 bg-gray-400 text-white rounded-full h-6 w-6 flex items-center justify-center text-xs lg:5/10 lg:left-6"> 
+                        0 
                         </div>
                         </div>
                     </NavLink>
@@ -65,13 +65,13 @@ export function HomePage() {
                 </nav>
             </div>
 
-            <div className = 'lg:grid md:grid lg:grid-cols-[500px_minmax(900px,1fr)] md:grid-cols-[300px_minmax(500px,900px)] sm:flex sm:justify-center sm:items-center sm:flex-col border-y-2 gap-x-1 min-h-152 border-b-amber-400 border-t-amber-400 sm:col-span-3' >
+            <div className = 'lg:grid md:grid lg:grid-cols-[500px_minmax(900px,1fr)] md:grid-cols-[300px_minmax(500px,900px)] sm:flex sm:justify-center sm:items-center sm:flex-col sm:h-full  border-y-2 gap-x-1 min-h-152 border-b-amber-400 border-t-amber-400 sm:col-span-3' >
                 
                 <div className="flex items-center justify-center h-full w-full">
                     <Description />
                 </div>
                 <div className = 'shadow-lg rounded-lg w-full md:order-1 sm:order-2 h-full flex items-center justify-center overflow-auto'>
-                    <div className="relative inset-0 aspect-video w-full h-full object-cover transition-opacity duration-1000 block shrink-0 object-center saturate-100">
+                    <div className="relative inset-0 aspect-video w-full h-full object-cover min-h-[400px] sm:min-h-[500px] transition-opacity duration-1000 block shrink-0 object-center saturate-100">
                     <ImageSlider />
                     </div>
                 </div>
