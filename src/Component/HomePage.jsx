@@ -64,12 +64,12 @@ export function HomePage() {
                 </nav>
             </div>
 
-            <div className = 'grid lg:grid-cols-[500px_minmax(900px,1fr)] md:grid-cols-[300px_minmax(500px,900px)] sm:grid-cols-1 border-y-2 gap-x-1 min-h-152 border-b-amber-400 border-t-amber-400 sm:col-span-3' >
+            <div className = 'grid lg:grid-cols-[500px_minmax(900px,1fr)] md:grid-cols-[300px_minmax(500px,900px)] sm:flex border-y-2 gap-x-1 min-h-152 border-b-amber-400 border-t-amber-400 sm:col-span-3' >
                 
                 <div className="flex items-center justify-center h-full w-full">
                     <Description />
                 </div>
-                <div className = 'shadow-lg rounded-lg w-full md:order-1 sm:order-2 h-full flex items-center justify-center max-w-7xl mx-auto sm:w-2xl ' >
+                <div className = 'shadow-lg rounded-lg w-full md:order-1 sm:order-2 h-full flex items-center justify-center'>
                     <div className="relative inset-0 aspect-video w-full h-full object-cover transition-opacity duration-1000 block shrink-0 object-center saturate-100">
                     <ImageSlider />
                     </div>
