@@ -76,7 +76,7 @@ export function HomePage() {
                 </div>
             </div>
 
-            <div>
+            <div className="sm:pl-2.5 md:pl-2.5">
                 <Footer />
             </div>
         </>
