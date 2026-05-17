@@ -56,7 +56,7 @@ export function HomePage() {
                                 isActive ? 'text-red-400 cursor-pointer font-bold px-3 py-2' : 'hover:text-gray-600 relative cursor-pointer px-3 py-2 text-gray-400 transition-colors duration-200'}>
                         <div className="relative inline-block border-2">
                         <img src="/Cart.jpg" alt="Cart" className="relative inline-block h-10 w-10 bg-gray-100" />
-                        <div className="absolute lg:top-5/10 left-6 bg-gray-400 text-black rounded-full h-6 w-6 flex items-center justify-center sm:-top-5/10 sm:-left-6">
+                        <div className="absolute lg:top-5/10 left-6 bg-gray-400 text-black rounded-full h-6 w-6 flex items-center justify-center sm:-top-5/10 sm:left-6">
                         0
                         </div>
                         </div>
@@ -65,7 +65,7 @@ export function HomePage() {
                 </nav>
             </div>
 
-            <div className = 'grid lg:grid-cols-[500px_minmax(900px,1fr)] md:grid-cols-[300px_minmax(500px,900px)] sm:flex sm:justify-center sm:items-center sm:flex-col sm:max-w-2xl border-y-2 gap-x-1 min-h-152 border-b-amber-400 border-t-amber-400 sm:col-span-3' >
+            <div className = 'lg:grid md:grid lg:grid-cols-[500px_minmax(900px,1fr)] md:grid-cols-[300px_minmax(500px,900px)] sm:flex sm:justify-center sm:items-center sm:flex-col border-y-2 gap-x-1 min-h-152 border-b-amber-400 border-t-amber-400 sm:col-span-3' >
                 
                 <div className="flex items-center justify-center h-full w-full">
                     <Description />

@@ -6,62 +6,62 @@ export function ImageSlider() {
 
     const images = [
         {
-            id: crypto.randomUUID(),
+            id: "1",
             src: "/ImageSlider/Dior-Sauvage.jpg",
             alt: "a Male "
         },
         {
-            id: crypto.randomUUID(),
+            id: "2",
             src: "/ImageSlider/Malee.jpg",
             alt: "a male"
         },
         {
-            id: crypto.randomUUID(),
+            id: "3",
             src: "/ImageSlider/Gentleman.jpg",
             alt: "a male"
         },
         {
-            id: crypto.randomUUID(),
+            id: "4",
             src: "/ImageSlider/Woman-a.jpg",
             alt: "a woman"
         },
         {
-            id: crypto.randomUUID(),
+            id: "5",
             src: "/ImageSlider/Woman-b.jpg",
             alt: "a woman"
         },
         {
-            id: crypto.randomUUID(),
+            id: "6",
             src: "/ImageSlider/woman.jpg",
             alt: "a woman"
         },
         {
-            id: crypto.randomUUID(),
+            id: "7",
             src:"/ImageSlider/Uni.jpg",
             alt: "a unisex"
         },
         {
-            id: crypto.randomUUID(),
+            id: "8",
             src: "/ImageSlider/Uni-3.jpg",
             alt: "a unisex"
         },
         {
-            id: crypto.randomUUID(),
+            id: "9",
             src: "/ImageSlider/Uni-2.jpg",
             alt: "a unisex"
         },
         {
-            id: crypto.randomUUID(),
+            id: "10",
             src: "/ImageSlider/New-1.jpg",
             alt: "a new arrival"
         },
         {
-            id: crypto.randomUUID(),
+            id: "11",
             src: "/ImageSlider/New-2.jpg",
             alt: "a new arrival"
         },
         {
-            id: crypto.randomUUID(),    
+            id: "12",    
             src: "/ImageSlider/New-3.jpg",
             alt: "a new arrival"
         }
