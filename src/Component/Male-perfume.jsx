@@ -80,7 +80,9 @@
 
                 <p className="text-2xl font-bold text-green-600">
                 Price: ${perfume.price.toFixed(2)}
-                </p>
+                    </p>
+
+                <div className="grow"></div>
 
                 <button className="mt-4 bg-gray-400 text-white px-6 py-2 rounded-lg cursor-pointer hover:bg-gray-600">
                 Add to Cart
