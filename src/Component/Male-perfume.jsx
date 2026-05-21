@@ -31,18 +31,26 @@
 
     }, []);
 
+        const buttonAddToCart = (perfume) => {
+        setTimeout(() => {
+            alert(`${perfume.name} has been added to your cart!`);
+
+        }, 500);
+        console.log(`Added ${perfume.name} to cart!`);
+    }
+
     return (
         <>
         <title>MALE PERFUMES</title>
 
         <div className="sticky top-0 left-0 w-full z-50 bg-transparent backdrop-filter backdrop-blur-sm border-b-2 border-amber-400">
-        <h1 className="text-center lg:text-7xl sm:text-3xl md:text-5xl font-bold my-6 p-8 mt-0 bg-gray-600">
+        <h1 className="text-center lg:text-7xl text-3xl md:text-5xl font-bold my-6 p-8 mt-0 bg-gray-600">
             Men's Perfumes
         </h1>
         </div>
 
-        <div className="flex md:flex-row py-4 xl:justify-evenly xl:flex-row md:justify-between md:flex xl:items-center md:items-center sm:flex-col sm:items-center sm:justify-center w-full border-b-2 border-b-amber-400 bg-gray-100">
-            <div className="sm:inline-block flex xl:flex-row md:items-center sm:items-center ">
+        <div className="flex md:flex-row py-4 xl:justify-evenly xl:flex-row md:justify-between md:flex xl:items-center md:items-center flex-col items-center justify-center w-full border-b-2 border-b-amber-400 bg-gray-100">
+            <div className="sm:inline-block flex xl:flex-row md:items-center sm:items-center mb-3">
                 <NavLink to ="/" className="text-4xl text-gray-400 hover:text-gray-800 hover:underline "> LUXURY PERFUMES </NavLink>
             </div>
         <div className="md:flex flex xl:flex-row md:items-center sm:items-center md:w-12/12 md:grow ">
@@ -79,12 +87,14 @@
                 </p>
 
                 <p className="text-2xl font-bold text-green-600">
-                Price: ${perfume.price.toFixed(2)}
+                Price: GHc{perfume.price.toFixed(2)}
                     </p>
 
                 <div className="grow"></div>
 
-                <button className="mt-4 bg-gray-400 text-white px-6 py-2 rounded-lg cursor-pointer hover:bg-gray-600">
+                    <button className="mt-4 bg-gray-400 text-white px-6 py-2 rounded-lg cursor-pointer hover:bg-gray-600"
+                        onClick={() => buttonAddToCart(perfume)}
+                    >
                 Add to Cart
                 </button>
 
