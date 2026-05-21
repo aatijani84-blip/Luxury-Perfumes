@@ -51,7 +51,7 @@
         </div>
         </div>
 
-        <div className="grid lg:grid-cols-6 md:grid-cols-4 sm:grid-cols-2 gap-4 p-4">
+        <div className="grid lg:grid-cols-6 md:grid-cols-4 grid-cols-2 gap-4 p-4">
 
             {malePerfumes.map((perfume) => (
 
