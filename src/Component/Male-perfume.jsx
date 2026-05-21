@@ -5,7 +5,8 @@
 
     export function MalePerfume() {
 
-    const [malePerfumes, setMalePerfumes] = useState([]);
+        const [malePerfumes, setMalePerfumes] = useState([]);
+        const [clickedPerfume, setClickedPerfume] = useState(null);
 
     useEffect(() => {
 
@@ -37,7 +38,19 @@
 
         }, 500);
         console.log(`Added ${perfume.name} to cart!`);
-    }
+        }
+
+        const handlePerfumeClick = (perfume) => { 
+            setClickedPerfume(perfume);
+            setTimeout(() => { 
+                setClickedPerfume(null);
+            }, 1000)
+        }
+
+        const allFunction = (perfume) => { 
+            buttonAddToCart(perfume);
+            handlePerfumeClick(perfume);
+        }
 
     return (
         <>
@@ -86,16 +99,17 @@
                 Release year: {perfume.releaseYear}
                 </p>
 
-                <p className="text-2xl font-bold text-green-600">
+                <p className="text-2xl  text-green-600">
                 Price: GHc{perfume.price.toFixed(2)}
                     </p>
 
                 <div className="grow"></div>
 
                     <button className="mt-4 bg-gray-400 text-white px-6 py-2 rounded-lg cursor-pointer hover:bg-gray-600"
-                        onClick={() => buttonAddToCart(perfume)}
+                        onClick={() => allFunction(perfume)}
                     >
-                Add to Cart
+
+                        { clickedPerfume && clickedPerfume.id === perfume.id ? "Added!" : "Add to Cart" }
                 </button>
 
             </div>
