@@ -7,12 +7,12 @@ export function ImageSlider() {
     const images = [
         {
             id: "1",
-            src: "/ImageSlider/Dior-Sauvage.jpg",
+            src: "/ImageSlider/Dior-Savage.jpg",
             alt: "a Male "
         },
         {
             id: "2",
-            src: "/ImageSlider/Malee.jpg",
+            src: "/ImageSlider/Male.jpg",
             alt: "a male"
         },
         {

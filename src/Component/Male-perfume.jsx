@@ -45,7 +45,7 @@
             <div className="sm:inline-block flex xl:flex-row md:items-center sm:items-center ">
                 <NavLink to ="/" className="text-4xl text-gray-400 hover:text-gray-800 hover:underline "> LUXURY PERFUMES </NavLink>
             </div>
-        <div className="md:flex flex xl:flex-row md:items-center sm:items-center md:w-12/12 md:grow sm:grow">
+        <div className="md:flex flex xl:flex-row md:items-center sm:items-center md:w-12/12 md:grow ">
             <input type='text' className="border-2 border-amber-400 rounded-l-lg px-3 py-2 xl:w-2xl md:w-12/12 sm:w-8/12" placeholder='Search perfumes...' />
             <button className="bg-gray-400 text-white rounded-r-lg px-4 py-2 cursor-pointer hover:bg-gray-600">Search</button>
         </div>
