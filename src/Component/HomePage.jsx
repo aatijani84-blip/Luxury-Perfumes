@@ -70,8 +70,8 @@ export function HomePage() {
                 <div className="flex items-center justify-center h-full w-full">
                     <Description />
                 </div>
-                <div className='shadow-lg rounded-lg w-full h-full overflow-hidden'>
-                    <div className="relative inset-0 aspect-video w-full h-full object-cover min-h-75 sm:min-h-88 md:min-h-[400px] lg:min-h-[450px] transition-opacity duration-1000 shrink-0 object-center saturate-100">
+                <div className='shadow-2xl rounded-lg w-full h-full overflow-hidden'>
+                    <div className="relative inset-0 aspect-video w-full h-full sm:w-screen object-cover min-h-75 sm:min-h-88 md:min-h-[400px] lg:min-h-[450px] transition-opacity duration-1000 shrink-0 object-center saturate-100">
                         <ImageSlider />
                     </div>
                 </div>
