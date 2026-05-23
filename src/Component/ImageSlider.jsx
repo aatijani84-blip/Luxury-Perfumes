@@ -87,7 +87,7 @@ export function ImageSlider() {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 1 }}
-                    className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 rounded-lg saturate-100"
+                    className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 rounded-lg saturate-100 block"
                 />
             </AnimatePresence>
         </div>
