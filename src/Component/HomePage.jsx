@@ -65,19 +65,19 @@ export function HomePage() {
                 </nav>
             </div>
 
-            <div className = 'lg:grid md:grid lg:grid-cols-[500px_minmax(900px,1fr)] md:grid-cols-[300px_minmax(500px,900px)] sm:flex sm:justify-center sm:items-center sm:flex-col sm:h-full  border-y-2 gap-x-1 min-h-152 border-b-amber-400 border-t-amber-400 sm:col-span-3' >
+            <div className = 'lg:grid md:grid lg:grid-cols-[500px_minmax(900px,1fr)] md:grid-cols-[300px_minmax(500px,900px)] grid-cols-1 sm:gap-y-1 gap-y-1 md:gap-x-1 lg:gap-x-1 min-h-152 border-b-amber-400 border-t-amber-400 sm:col-span-3' >
                 
                 <div className="flex items-center justify-center h-full w-full">
                     <Description />
                 </div>
                 <div className='shadow-2xl rounded-lg w-full h-full overflow-hidden'>
-                    <div className="relative inset-0 aspect-video w-full h-full sm:w-screen sm:max-h-screen object-cover min-h-75 sm:min-h-88 md:min-h-100 lg:min-h-113 transition-opacity duration-1000 shrink-0 object-center saturate-100">
+                    <div className="relative inset-0 aspect-video w-full h-full object-cover sm:m-auto min-h-75 sm:min-h-88 md:min-h-[400px] lg:min-h-[450px] transition-opacity duration-1000 shrink-0 object-center saturate-100">
                         <ImageSlider />
                     </div>
                 </div>
             </div>
 
-            <div className="sm:-mt-70">
+            <div>
                 <Footer />
             </div>
         </>
