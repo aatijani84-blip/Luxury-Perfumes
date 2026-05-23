@@ -71,13 +71,13 @@ export function HomePage() {
                     <Description />
                 </div>
                 <div className='shadow-2xl rounded-lg w-full h-full overflow-hidden'>
-                    <div className="relative inset-0 aspect-video w-full h-full sm:w-screen object-cover min-h-75 sm:min-h-88 md:min-h-[400px] lg:min-h-[450px] transition-opacity duration-1000 shrink-0 object-center saturate-100">
+                    <div className="relative inset-0 aspect-video w-full h-full sm:w-screen sm:max-h-screen object-cover min-h-75 sm:min-h-88 md:min-h-100 lg:min-h-113 transition-opacity duration-1000 shrink-0 object-center saturate-100">
                         <ImageSlider />
                     </div>
                 </div>
             </div>
 
-            <div>
+            <div className="sm:-mt-70">
                 <Footer />
             </div>
         </>
