@@ -87,7 +87,7 @@
                     className="w-full h-48 object-cover mb-2"
                 />
 
-                <h2 className="text-xl font-bold mb-2">
+                <h2 className="text-xl font-bold mb-2 truncate w-full text-center">
                 {perfume.name}
                 </h2>
 
@@ -100,7 +100,7 @@
                 </p>
 
                 <p className="text-2xl  text-green-600">
-                Price: GHc{perfume.price.toFixed(2)}
+                GHc{perfume.price.toFixed(2)}
                     </p>
 
                 <div className="grow"></div>
