@@ -45,7 +45,6 @@ export function SignUp() {
         }
 
         if (data.user) {
-            navigate("/");
             setMessage(
                 "Account created successfully. You can now log in."
             );
