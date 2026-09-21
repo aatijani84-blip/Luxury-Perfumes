@@ -16,6 +16,11 @@ export function SignUp() {
         setError("");
         setMessage("");
 
+        if (!username.trim()) {
+            setError("Please enter a username.");
+            return;
+        }
+
         if (password !== confirmPassword) {
             setError("Passwords do not match.");
             return;
@@ -29,14 +34,14 @@ export function SignUp() {
         setLoading(true);
 
         const { data, error } = await supabase.auth.signUp({
-        email,
-        password,
-        options: {
-            data: {
-                username: username
+            email: email.trim(),
+            password,
+            options: {
+                data: {
+                    username: username.trim()
+                }
             }
-        }
-    });
+        });
 
         if (error) {
             setError(error.message);
@@ -46,7 +51,7 @@ export function SignUp() {
 
         if (data.user) {
             setMessage(
-                "Account created successfully. You can now log in."
+                "Account created successfully! Please check your email and confirm your account before logging in."
             );
 
             setEmail("");
@@ -86,11 +91,15 @@ export function SignUp() {
 
                     <form onSubmit={handleSignUp} className="space-y-4">
                         <div>
-                            <label htmlFor="Email" className="mb-1 block font-semibold text-gray-700">
+                            <label
+                                htmlFor="email"
+                                className="mb-1 block font-semibold text-gray-700"
+                            >
                                 Email
                             </label>
 
                             <input
+                                id="email"
                                 type="email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
@@ -101,11 +110,15 @@ export function SignUp() {
                         </div>
 
                         <div>
-                            <label htmlFor="usernamr" className="mb-1 block font-semibold text-gray-700">
+                            <label
+                                htmlFor="username"
+                                className="mb-1 block font-semibold text-gray-700"
+                            >
                                 Username
                             </label>
 
                             <input
+                                id="username"
                                 type="text"
                                 value={username}
                                 onChange={(e) => setUsername(e.target.value)}
@@ -115,13 +128,16 @@ export function SignUp() {
                             />
                         </div>
 
-
                         <div>
-                            <label htmlFor="Password" className="mb-1 block font-semibold text-gray-700">
+                            <label
+                                htmlFor="password"
+                                className="mb-1 block font-semibold text-gray-700"
+                            >
                                 Password
                             </label>
 
                             <input
+                                id="password"
                                 type="password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
@@ -132,11 +148,15 @@ export function SignUp() {
                         </div>
 
                         <div>
-                            <label htmlFor="COnfirm-Password" className="mb-1 block font-semibold text-gray-700">
+                            <label
+                                htmlFor="confirmPassword"
+                                className="mb-1 block font-semibold text-gray-700"
+                            >
                                 Confirm Password
                             </label>
 
                             <input
+                                id="confirmPassword"
                                 type="password"
                                 value={confirmPassword}
                                 onChange={(e) => setConfirmPassword(e.target.value)}
