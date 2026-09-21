@@ -1,11 +1,28 @@
 import { NavLink, useNavigate, useSearchParams } from 'react-router';
-import { Description } from './Description';
-import { Footer } from './footer';
-import { ImageSlider } from './ImageSlider';
+import { Description } from '../Home-Component/Description';
+import { Footer } from '../Home-Component/footer';
+import { ImageSlider } from '../Home-Component/ImageSlider';
+    import { useEffect } from "react";
+import { supabase } from "../Auth/supabase";
 
 export function HomePage() {
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
+
+
+
+useEffect(() => {
+    const testConnection = async () => {
+        const { data, error } = await supabase
+            .from("perfumes")
+            .select("*");
+
+        console.log("Data:", data);
+        console.log("Error:", error);
+    };
+
+    testConnection();
+}, []);
     
     return (
         <>
@@ -34,13 +51,13 @@ export function HomePage() {
                         ABOUT
                     </NavLink>
 
-                    <NavLink to="/Login"
+                    <NavLink to="/login"
                         className={({ isActive }) =>
                             isActive ? 'text-red-400 cursor-pointer font-bold px-3 py-2' : 'hover:text-gray-600 cursor-pointer px-3 py-2 hover:underline text-gray-400 transition-colors duration-200'}>
                         Login
                     </NavLink>
 
-                    <NavLink to = "/Sign-Up"
+                    <NavLink to = "/signUp"
                     className = {({isActive }) =>
                                 isActive ? 'text-red-400 cursor-pointer font-bold px-3 py-2' : 'hover:text-gray-600 cursor-pointer hover:underline px-3 py-2 text-gray-400 transition-colors duration-200'}>
                         Sign Up
@@ -65,13 +82,13 @@ export function HomePage() {
                 </nav>
             </div>
 
-            <div className = 'lg:grid md:grid lg:grid-cols-[500px_minmax(900px,1fr)] md:grid-cols-[300px_minmax(500px,900px)] grid-cols-1 sm:gap-y-1 gap-y-1 md:gap-x-1 lg:gap-x-1 min-h-152 border-b-amber-400 border-t-amber-400 sm:col-span-3' >
+            <div className='lg:grid md:grid lg:grid-cols-[500px_minmax(900px,1fr)] md:grid-cols-[300px_minmax(500px,900px)] grid-cols-1 sm:gap-y-1 gap-y-1 md:gap-x-1 lg:gap-x-1 min-h-152 border-b-amber-400 border-t-amber-400 sm:col-span-3' >
                 
                 <div className="flex items-center justify-center h-full w-full">
                     <Description />
                 </div>
                 <div className='shadow-2xl rounded-lg w-full h-full overflow-hidden'>
-                    <div className="relative inset-0 aspect-video w-full h-full object-cover sm:m-auto min-h-75 sm:min-h-88 md:min-h-[400px] lg:min-h-[450px] transition-opacity duration-1000 shrink-0 object-center saturate-100">
+                    <div className="relative inset-0 aspect-video w-full h-full object-cover sm:m-auto min-h-80 sm:min-h-88 md:min-h-100 lg:min-h-113 transition-opacity duration-1000 shrink-0 object-center saturate-100">
                         <ImageSlider />
                     </div>
                 </div>
