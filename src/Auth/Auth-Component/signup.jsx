@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import { supabase } from "../supabase";
 
 export function SignUp() {
@@ -11,15 +11,13 @@ const [error, setError] = useState("");
 const [message, setMessage] = useState("");
 const [loading, setLoading] = useState(false);
 
+const navigate = useNavigate();
+
 const handleSignUp = async (e) => {
 e.preventDefault();
+
 setError("");
 setMessage("");
-
-if (!username.trim()) {
-    setError("Please enter a username.");
-    return;
-}
 
 if (password !== confirmPassword) {
     setError("Passwords do not match.");
@@ -44,26 +42,34 @@ if (error) {
     return;
 }
 
-if (data.user) {
-    const { error: profileError } = await supabase.from("profiles").insert({
+if (!data.user) {
+    setError("Unable to create account.");
+    setLoading(false);
+    return;
+}
+
+const { error: profileError } = await supabase.from("profiles").insert({
     id: data.user.id,
     email: email.trim(),
     username: username.trim(),
-    });
+});
 
-    if (profileError) {
+if (profileError) {
     setError(profileError.message);
     setLoading(false);
     return;
-    }
-
-    setMessage("Account created successfully!");
-
-    setEmail("");
-    setPassword("");
-    setUsername("");
-    setConfirmPassword("");
 }
+
+setMessage("Account created successfully!");
+
+setEmail("");
+setPassword("");
+setUsername("");
+setConfirmPassword("");
+
+setLoading(false);
+
+navigate("/");
 };
 
 return (
