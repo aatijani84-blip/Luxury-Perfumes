@@ -32,14 +32,17 @@ export function SignUp() {
         setLoading(true);
 
         const { data, error } = await supabase.auth.signUp({
-            email: email.trim(),
-            password,
-            options: {
-                data: {
-                    username: username.trim()
-                }
-            }
-        });
+    email: email.trim(),
+    password,
+    options: {
+        data: {
+            username: username.trim()
+        }
+    }
+});
+
+console.log("Signup data:", data);
+console.log("Signup error:", error);
 
         if (error) {
             setError(error.message);
