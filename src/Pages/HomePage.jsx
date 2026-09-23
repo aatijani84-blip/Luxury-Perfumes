@@ -197,7 +197,7 @@ export function HomePage() {
                 </div>
 
                 <div className="shadow-2xl rounded-lg w-full h-full overflow-hidden">
-                    <div className="relative inset-0 aspect-video w-full h-full object-cover sm:m-auto min-h-90 sm:min-h-88 md:min-h-100 lg:min-h-113 transition-opacity duration-1000 shrink-0 object-center saturate-100">
+                    <div className="relative inset-0 aspect-video w-full h-full object-cover sm:m-auto min-h-55 sm:min-h-88 md:min-h-100 lg:min-h-113 transition-opacity duration-1000 shrink-0 object-center saturate-100">
                         <ImageSlider />
                     </div>
                 </div>
