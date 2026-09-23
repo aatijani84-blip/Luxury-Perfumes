@@ -188,15 +188,13 @@ return (
     </nav>
     </div>
 
-    <div className="lg:grid md:grid lg:grid-cols-[500px_minmax(900px,1fr)] md:grid-cols-[300px_minmax(500px,900px)] grid-cols-1 sm:gap-y-1 gap-y-1 md:gap-x-1 lg:gap-x-1 min-h-152 border-b-amber-400 border-t-amber-400 sm:col-span-3">
-    <div className="flex items-center justify-center h-full w-full">
+    <div className="grid grid-cols-1 md:grid-cols-[300px_minmax(0,1fr)] lg:grid-cols-[500px_minmax(0,1fr)] gap-1 border-b-2 border-amber-400">
+    <div className="flex items-center justify-center">
         <Description />
     </div>
 
-    <div className="shadow-2xl rounded-lg w-full h-full overflow-hidden">
-        <div className="overflow-hidden rounded-lg shadow-2xl">
+    <div className="overflow-hidden rounded-lg shadow-2xl">
         <ImageSlider />
-        </div>
     </div>
     </div>
 
