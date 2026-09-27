@@ -9,6 +9,8 @@ import { OrderSuccess } from './User/Pages/order-success'
 import { Orders } from './User/Pages/orders'
 import { OrderDetails } from './User/Order-Component/order-details'
 import { AdminOrders } from './Admin/Orders-Comp/admin-orders'
+import { AdminHome } from './Admin/Pages/admin'
+import { AdminProducts } from './Admin/Products/products'
 import './App.css'
 
 function App() {
@@ -25,6 +27,9 @@ function App() {
       <Route path="/orders" element={<Orders />} />
       <Route path="/orders/:orderId" element={<OrderDetails />} />
       <Route path="/admin/orders" element={<AdminOrders />} />
+      <Route path="/admin" element={<AdminHome />} />
+      <Route path="/admin/products" element={<AdminProducts />}
+/>
     </Routes>
   )
 }

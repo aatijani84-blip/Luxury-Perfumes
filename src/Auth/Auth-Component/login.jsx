@@ -16,7 +16,7 @@ e.preventDefault();
 setError("");
 setLoading(true);
 
-const { error } = await supabase.auth.signInWithPassword({
+const { data, error } = await supabase.auth.signInWithPassword({
     email: email.trim(),
     password,
 });
@@ -27,8 +27,28 @@ if (error) {
     return;
 }
 
+const user = data.user;
+
+const { data: profile, error: profileError } = await supabase
+    .from("profiles")
+    .select("role")
+    .eq("id", user.id)
+    .single();
+
+if (profileError) {
+    console.error("Profile error:", profileError);
+    setError("Unable to load your profile.");
+    setLoading(false);
+    return;
+}
+
 setLoading(false);
-navigate("/");
+
+if (profile.role === "admin") {
+    navigate("/admin");
+} else {
+    navigate("/");
+}
 };
 
 return (
