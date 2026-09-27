@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from "react-router";
 import { Description } from "../Home-Component/Description";
 import { Footer } from "../Home-Component/footer";
 import { ImageSlider } from "../Home-Component/ImageSlider";
+import { Modal } from "../Home-Component/Modal";
 import { supabase } from "../../Auth/supabase";
 import {
 FiShoppingCart,
@@ -23,6 +24,7 @@ const [loadingUser, setLoadingUser] = useState(true);
 const [cartCount, setCartCount] = useState(0);
 const [search, setSearch] = useState("");
 const [menuOpen, setMenuOpen] = useState(false);
+const [isModalOpen, setIsModalOpen] = useState(false);
 
 useEffect(() => {
 const getUser = async () => {
@@ -463,7 +465,7 @@ return (
 
         <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
         <NavLink
-            to="/male-perfume"
+            to="/Male-perfume"
             className="group relative overflow-hidden rounded-2xl bg-gray-900 p-6 text-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl sm:p-8"
         >
             <div className="relative z-10">
@@ -478,7 +480,7 @@ return (
             </p>
 
             <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-white">
-                Shop Collection
+                Shop Collection{" "}
                 <span className="transition group-hover:translate-x-1">
                 →
                 </span>
@@ -526,13 +528,16 @@ return (
         Browse our collection and discover your next signature scent.
         </p>
 
-        <NavLink
-        to="/male-perfume"
+        <button
+        type="button"
+        onClick={() => setIsModalOpen(true)}
         className="mt-6 inline-flex items-center rounded-full bg-amber-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-amber-500"
         >
         Explore Perfumes
-        </NavLink>
+        </button>
     </section>
+
+    <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 
     <Footer />
     </div>
