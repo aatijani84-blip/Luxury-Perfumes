@@ -3,13 +3,15 @@ import { Description } from "../Home-Component/Description";
 import { Footer } from "../Home-Component/footer";
 import { ImageSlider } from "../Home-Component/ImageSlider";
 import { useEffect, useState } from "react";
-import { supabase } from "../Auth/supabase";
+import { supabase } from "../../Auth/supabase";
+import { FiShoppingCart } from "react-icons/fi";
 
 export function HomePage() {
 const navigate = useNavigate();
 
 const [username, setUsername] = useState("");
 const [loadingUser, setLoadingUser] = useState(true);
+const [cartCount, setCartCount] = useState(0);
 
 useEffect(() => {
 const getUser = async () => {
@@ -65,6 +67,68 @@ const testConnection = async () => {
 
 testConnection();
 }, []);
+
+useEffect(() => {
+    let channel;
+
+    const setupCart = async () => {
+        const {
+            data: { user }
+        } = await supabase.auth.getUser();
+
+        if (!user) {
+            setCartCount(0);
+            return;
+        }
+
+        const fetchCartCount = async () => {
+            const { data, error } = await supabase
+                .from("cart_items")
+                .select("quantity")
+                .eq("user_id", user.id);
+
+            if (error) {
+                console.error("Error fetching cart count:", error);
+                return;
+            }
+
+            const totalQuantity = data.reduce(
+                (total, item) => total + item.quantity,
+                0
+            );
+
+            setCartCount(totalQuantity);
+        };
+
+        await fetchCartCount();
+
+        channel = supabase
+            .channel(`cart-count-${user.id}`)
+            .on(
+                "postgres_changes",
+                {
+                    event: "*",
+                    schema: "public",
+                    table: "cart_items",
+                    filter: `user_id=eq.${user.id}`
+                },
+                () => {
+                    fetchCartCount();
+                }
+            )
+            .subscribe();
+    };
+
+    setupCart();
+
+    return () => {
+        if (channel) {
+            supabase.removeChannel(channel);
+        }
+    };
+}, []);
+
+
 
 return (
 <>
@@ -173,16 +237,20 @@ return (
             : "hover:text-gray-600 relative cursor-pointer px-3 py-2 text-gray-400 transition-colors duration-200"
         }
         >
-        <div className="relative inline-block">
-            <img
-            src="/Cart.jpg"
-            alt="Cart"
-            className="relative inline-block h-10 w-10 bg-gray-100"
-            />
+        <div className="relative">
+            <button
+            type="button"
+            onClick={() => navigate("/cart")}
+            className="rounded-full p-2 text-gray-700 transition-colors duration-200 hover:bg-gray-200"
+            >
+            <FiShoppingCart className="text-2xl" />
+            </button>
 
-            <div className="absolute top-5 -right-2 bg-gray-400 text-white rounded-full h-6 w-6 flex items-center justify-center text-xs lg:5/10 lg:left-6">
-            0
-            </div>
+            {cartCount > 0 && (
+            <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-red-500 px-1 text-xs font-bold text-white">
+                {cartCount}
+            </span>
+            )}
         </div>
         </NavLink>
     </nav>

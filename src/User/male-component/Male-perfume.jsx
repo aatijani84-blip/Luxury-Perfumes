@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router";
-import { supabase } from "../Auth/supabase" 
-import { Footer } from "./footer";
+import { supabase } from "../../Auth/supabase";
+import { Footer } from "../Home-Component/footer";
 
 export function MalePerfume() {
     const [malePerfumes, setMalePerfumes] = useState([]);
     const [search, setSearch] = useState("");
     const [clickedPerfume, setClickedPerfume] = useState(null);
+    const [addingToCart, setAddingToCart] = useState(null);
 
 useEffect(() => {
     const fetchData = async () => {
@@ -28,15 +29,66 @@ useEffect(() => {
 }, []);
 
 
-    const handleAddToCart = (perfume) => {
-        setClickedPerfume(perfume.id);
+   const handleAddToCart = async (perfume) => {
+    setAddingToCart(perfume.id);
 
-        console.log(`Added ${perfume.name} to cart!`);
+    const {
+        data: { user }
+    } = await supabase.auth.getUser();
 
-        setTimeout(() => {
-            setClickedPerfume(null);
-        }, 1000);
-    };
+    if (!user) {
+        setAddingToCart(null);
+        alert("Please login to add items to your cart.");
+        return;
+    }
+
+    const { data: existingItem, error: fetchError } = await supabase
+        .from("cart_items")
+        .select("id, quantity")
+        .eq("user_id", user.id)
+        .eq("perfume_id", perfume.id)
+        .maybeSingle();
+
+    if (fetchError) {
+        console.error("Error checking cart:", fetchError);
+        setAddingToCart(null);
+        return;
+    }
+
+    if (existingItem) {
+        const { error } = await supabase
+            .from("cart_items")
+            .update({
+                quantity: existingItem.quantity + 1
+            })
+            .eq("id", existingItem.id);
+
+        if (error) {
+            console.error("Error updating cart:", error);
+            setAddingToCart(null);
+            return;
+        }
+    } else {
+        const { error } = await supabase
+            .from("cart_items")
+            .insert({
+                user_id: user.id,
+                perfume_id: perfume.id,
+                quantity: 1
+            });
+
+        if (error) {
+            console.error("Error adding to cart:", error);
+            setAddingToCart(null);
+            return;
+        }
+    }
+
+    setAddingToCart(null);
+    setClickedPerfume(perfume.id);
+    alert(`${perfume.name} added to cart!`);
+};
+
 
     const filteredPerfumes = malePerfumes.filter((perfume) =>
         `${perfume.name} ${perfume.brand}`
@@ -135,19 +187,27 @@ useEffect(() => {
 
                             {/* Push button to bottom */}
                             <div className="mt-auto pt-5">
-                                <button
-                                    type="button"
-                                    onClick={() => handleAddToCart(perfume)}
-                                    className={`w-full rounded-lg px-6 py-2 font-semibold text-white transition-colors duration-200 ${
-                                        clickedPerfume === perfume.id
-                                            ? "bg-green-600"
-                                            : "bg-gray-500 hover:bg-gray-700"
-                                    }`}
-                                >
-                                    {clickedPerfume === perfume.id
-                                        ? "Added!"
-                                        : "Add to Cart"}
-                                </button>
+<button
+    type="button"
+    onClick={() => handleAddToCart(perfume)}
+    disabled={addingToCart === perfume.id}
+    className={`w-full rounded-lg px-6 py-2 font-semibold text-white transition-colors duration-200 ${
+        clickedPerfume === perfume.id
+            ? "bg-green-600"
+            : "bg-gray-500 hover:bg-gray-700"
+    } ${
+        addingToCart === perfume.id
+            ? "cursor-not-allowed opacity-50"
+            : "cursor-pointer"
+    }`}
+>
+    {addingToCart === perfume.id
+        ? "Adding..."
+        : clickedPerfume === perfume.id
+            ? "Added!"
+            : "Add to Cart"}
+</button>
+
                             </div>
                         </div>
                     </div>
